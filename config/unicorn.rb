@@ -3,8 +3,8 @@ worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 preload_app true  # 更新時ダウンタイム無し
 
-listen "/tmp/unicorn.sock"
-pid "/tmp/unicorn.pid"
+listen "/home/ec2-user/itamae-sample/tmp/unicorn.sock"
+pid "/home/ec2-user/itamae-sample/unicorn.pid"
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
@@ -28,4 +28,3 @@ end
 # ログの出力
 stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
 stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-
